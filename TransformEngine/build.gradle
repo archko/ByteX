@@ -4,11 +4,13 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     compileOnly gradleApi()
     compileOnly "com.android.tools.build:gradle:$gradle_version"
-    compile "com.google.guava:guava:$guava_version"
-    testCompile 'com.squareup.okio:okio:1.14.0'
-    compile "io.reactivex.rxjava2:rxjava:2.2.6"
-    compile project(':GradleEnvApi')
-    compile project(':GradleToolKit')
+    api "com.google.guava:guava:$guava_version"
+    testImplementation 'com.squareup.okio:okio:1.14.0'
+    api "io.reactivex.rxjava2:rxjava:2.2.6"
+    api project(':GradleEnvApi')
+    api project(':GradleToolKit')
 }
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
 
 apply from: rootProject.file('gradle/publish.gradle')

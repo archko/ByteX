@@ -1,4 +1,5 @@
 package com.ss.android.ugc.bytex.example.getter_setter;
+
 @KeepGettersAndSetters
 public class Bean {
     private String name;
@@ -29,5 +30,13 @@ public class Bean {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    void hello() {
+        System.out.println("Hello");
+    }
+
+    void hello2() {
+        System.out.println("Hello2");
     }
 }

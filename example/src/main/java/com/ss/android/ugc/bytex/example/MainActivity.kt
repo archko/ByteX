@@ -1,8 +1,7 @@
 package com.ss.android.ugc.bytex.example
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import com.ss.android.ugc.bytex.example.coverage.CoverageReportTask
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -11,6 +10,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // Handle coverage log info, send to the server
-        CoverageReportTask.init()
+    }
+
+    fun hello() {
+        println("Hello")
     }
 }

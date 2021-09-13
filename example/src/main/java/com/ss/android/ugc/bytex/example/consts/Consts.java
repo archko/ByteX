@@ -1,8 +1,8 @@
 package com.ss.android.ugc.bytex.example.consts;
 
-import android.support.annotation.Keep;
-
 import com.google.gson.annotations.SerializedName;
+
+import androidx.annotation.Keep;
 
 public class Consts {
     private static final long serialVersionUID = 67305479L;

@@ -7,10 +7,11 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     compileOnly gradleApi()
     compileOnly "com.android.tools.build:gradle:$gradle_version"
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    compile project(':common')
-    compile project(':PluginConfigProcessor')
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    api project(':common')
+    api project(':PluginConfigProcessor')
     kapt project(':PluginConfigProcessor')
+    implementation project(':PluginConfigAnnotation')
 }
 sourceCompatibility = "1.8"
 targetCompatibility = "1.8"
