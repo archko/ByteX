@@ -87,8 +87,9 @@ class ThreadClassNodeVisitor(private val context: Context, private val node: Cla
 
     private fun MethodInsnNode.transformInvokeVirtual(klass: ClassNode, method: MethodNode) {
         //if (context.klassPool.get(THREAD).isAssignableFrom(this.owner)) {
-        if (klass.name == THREAD) {
-            context.logger.i("klass.name==className: + => ${this.owner}--${this.name}")
+        if (this.owner == THREAD) {
+            //context.logger.i("klass.name==className: + => ${klass.name}--${this.owner}--${this.name}${this.desc}")
+            context.logger.i("owner == THREAD:=> ${this.owner}--${this.name}--${this.desc} class-> ${klass.name}--${method.name}--${method.desc}")
             when ("${this.name}${this.desc}") {
                 "start()V" -> {
                     method.instructions.insertBefore(this, LdcInsnNode(makeThreadName(className)))
