@@ -12,6 +12,12 @@ class MainActivity : AppCompatActivity() {
         // Handle coverage log info, send to the server
 
         ThreadTest.test()
+        val test = ThreadTest()
+        test.testThread()
+        test.testTask()
+        test.handlerThread()
+        test.execute()
+        test.testTimer()
     }
 
     fun hello() {
