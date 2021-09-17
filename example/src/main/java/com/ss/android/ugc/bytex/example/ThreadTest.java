@@ -1,9 +1,13 @@
 package com.ss.android.ugc.bytex.example;
 
 import android.os.AsyncTask;
+import android.os.HandlerThread;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
- * @author wushuyong 2021/9/17:14:21
+ * @author archko 2021/9/17:14:21
  */
 public class ThreadTest {
 
@@ -33,5 +37,20 @@ public class ThreadTest {
                 System.out.println("onPostExecute");
             }
         }.execute("param");
+    }
+
+    public void handlerThread() {
+        HandlerThread handlerThread = new HandlerThread("handlerThread");
+        handlerThread.start();
+    }
+
+    public void execute() {
+        ExecutorService executorService = Executors.newCachedThreadPool();
+        executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("execute runnable");
+            }
+        });
     }
 }

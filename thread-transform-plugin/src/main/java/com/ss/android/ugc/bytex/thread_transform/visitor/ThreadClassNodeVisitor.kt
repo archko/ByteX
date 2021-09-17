@@ -1,7 +1,9 @@
 package com.ss.android.ugc.bytex.thread_transform.visitor
 
+import com.android.build.api.transform.TransformException
 import com.ss.android.ugc.bytex.thread_transform.Context
 import org.objectweb.asm.Opcodes
+import org.objectweb.asm.tree.AbstractInsnNode
 import org.objectweb.asm.tree.ClassNode
 import org.objectweb.asm.tree.InsnNode
 import org.objectweb.asm.tree.LdcInsnNode
@@ -461,8 +463,7 @@ class ThreadClassNodeVisitor(private val context: Context, private val node: Cla
                     "newScheduledThreadPool",
                     "newWorkStealingPool" -> {
                         val r = this.desc.lastIndexOf(')')
-                        val optimizationEnabled = true
-                        val name = if (optimizationEnabled) this.name.replace("new", "newOptimized") else this.name
+                        val name = if (context.optimizationEnabled) this.name.replace("new", "newOptimized") else this.name
                         val desc = "${this.desc.substring(0, r)}Ljava/lang/String;${this.desc.substring(r)}"
                         context.logger.i(" * ${this.owner}.${this.name}${this.desc} => $SHADOW_EXECUTORS.$name$desc: ${klass.name}.${method.name}${method.desc}")
                         this.owner = SHADOW_EXECUTORS
@@ -491,7 +492,7 @@ class ThreadClassNodeVisitor(private val context: Context, private val node: Cla
         type: String,
         optimizable: Boolean = false
     ) {
-        /*this.find {
+        this.find {
             (it.opcode == Opcodes.INVOKESPECIAL) &&
                     (it is MethodInsnNode) &&
                     (this.desc == it.owner && "<init>" == it.name)
@@ -509,9 +510,8 @@ class ThreadClassNodeVisitor(private val context: Context, private val node: Cla
             }
             method.instructions.insertBefore(init, LdcInsnNode(makeThreadName(className)))
             if (optimizable) {
-                method.instructions.insertBefore(init, LdcInsnNode(optimizationEnabled))
+                method.instructions.insertBefore(init, LdcInsnNode(context.optimizationEnabled))
             }
         } ?: throw TransformException("`invokespecial $desc` not found: ${klass.name}.${method.name}${method.desc}")
-    */
     }
 }

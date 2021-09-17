@@ -7,6 +7,8 @@ import org.gradle.api.Project;
 
 public final class Context extends BaseContext<ThreadTransformExtension> {
 
+    public boolean optimizationEnabled = true;
+
     Context(Project project, AppExtension android, ThreadTransformExtension extension) {
         super(project, android, extension);
     }
