@@ -10,6 +10,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // Handle coverage log info, send to the server
+
+        ThreadTest.test()
     }
 
     fun hello() {

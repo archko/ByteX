@@ -5,11 +5,12 @@ import com.ss.android.ugc.bytex.common.CommonPlugin;
 import com.ss.android.ugc.bytex.common.TransformConfiguration;
 import com.ss.android.ugc.bytex.common.visitor.ClassVisitorChain;
 import com.ss.android.ugc.bytex.pluginconfig.anno.PluginConfig;
-import com.ss.android.ugc.bytex.thread_transform.visitor.ThreadClassVisitor;
+import com.ss.android.ugc.bytex.thread_transform.visitor.ThreadClassNodeVisitor;
 import com.ss.android.ugc.bytex.transformer.TransformEngine;
 
 import org.gradle.api.Project;
 import org.jetbrains.annotations.NotNull;
+import org.objectweb.asm.tree.ClassNode;
 
 import javax.annotation.Nonnull;
 
@@ -32,8 +33,14 @@ public class ThreadTransformPlugin extends CommonPlugin<ThreadTransformExtension
 
     @Override
     public boolean transform(@NotNull String relativePath, @NotNull ClassVisitorChain chain) {
-        chain.connect(new ThreadClassVisitor(context));
+        //chain.connect(new ThreadClassVisitor(context));
         return super.transform(relativePath, chain);
+    }
+
+    @Override
+    public boolean transform(@NotNull String relativePath, @NotNull ClassNode node) {
+        new ThreadClassNodeVisitor(context, node).transform(node);
+        return super.transform(relativePath, node);
     }
 
     @Nonnull
