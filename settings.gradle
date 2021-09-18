@@ -39,5 +39,6 @@ include ':getter-setter-inline-plugin'
 include ':method-trace-plugin'
 include ':thread-transform-plugin'
 include ':booster-android-instrument-thread'
+project(':booster-android-instrument-thread').projectDir = new File('didi/booster-android-instrument-thread')
 
 //pull request
