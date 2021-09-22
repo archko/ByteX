@@ -45,5 +45,7 @@ include ':booster-android-instrument-toast'
 project(':booster-android-instrument-toast').projectDir = new File('didi/booster-android-instrument-toast')
 include ':booster-android-instrument'
 project(':booster-android-instrument').projectDir = new File('didi/booster-android-instrument')
+include ':toast-plugin'
+project(':toast-plugin').projectDir = new File('didi/toast-plugin')
 
 //pull request

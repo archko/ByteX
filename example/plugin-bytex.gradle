@@ -149,3 +149,9 @@ thread_transform {
     enableInDebug pluginEnableInDebug
     logLevel pluginLogLevel
 }
+apply plugin: 'bytex.toast'
+toast {
+    enable pluginEnable
+    enableInDebug pluginEnableInDebug
+    logLevel pluginLogLevel
+}
