@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
 
         // Handle coverage log info, send to the server
 
-        ThreadTest.test()
+        ThreadTest.test(this)
         val test = ThreadTest()
         test.testThread()
         test.testTask()

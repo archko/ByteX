@@ -1,9 +1,11 @@
 package com.ss.android.ugc.bytex.example;
 
+import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
+import android.widget.Toast;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -14,7 +16,8 @@ import java.util.concurrent.*;
  */
 public class ThreadTest {
 
-    public static void test() {
+    public static void test(Activity activity) {
+        Toast.makeText(activity, "adfadf", Toast.LENGTH_LONG).show();
     }
 
     public void testThread() {
